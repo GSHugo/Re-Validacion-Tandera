@@ -6,13 +6,17 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header><div><small>TANDERA</small><h1>Revalidación</h1></div><button id="adminBtn" class="ghost">Tarimas</button></header>
+  <header>
+    <div class="headerIdentity"><div class="brandLogo"><span>i</span>Full</div><div><small>TANDERA</small><h1>Revalidación</h1></div></div>
+    <button id="adminBtn" class="ghost">Tarimas</button>
+  </header>
   <main>
     <section id="home" class="view active">
       <div class="hero"><p>Operación de montacarguista</p><h2>Revalida mercancía sin vueltas.</h2></div>
       <label>Operador<input id="operator" autocomplete="name" placeholder="Nombre o número"></label>
       <button id="newBtn" class="primary big">＋ Crear nueva tarima</button>
       <button id="continueBtn" class="secondary hidden">Continuar tarima abierta</button>
+      <div class="inventoryBrand" aria-hidden="true"><div class="mascot">🐔<span>📋</span></div><strong>Inventarios</strong></div>
     </section>
 
     <section id="scan" class="view">
@@ -41,5 +45,5 @@
     <section id="detail" class="view"><button class="back" data-back="admin">← Tarimas</button><div id="detailBody"></div></section>
   </main>
   <div id="toast" role="status"></div><div id="loading" class="loading hidden">Procesando…</div>
-  <script src="config.js?v=4"></script><script src="app.js?v=4"></script>
+  <script src="config.js?v=5"></script><script src="app.js?v=5"></script>
 </body></html>
