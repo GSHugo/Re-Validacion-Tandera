@@ -1,6 +1,15 @@
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const state={pallet:null,locations:[],stream:null,detector:null,detecting:false,pending:Promise.resolve(),pendingCount:0,scanFailed:false,editingCode:''};
 const cfg=window.TANDERA_CONFIG||{};
+function ensureEditorUI(){
+  if(!$('#refreshBtn')){
+    const admin=$('#adminBtn');
+    if(admin){const wrap=document.createElement('div');wrap.className='headerActions';admin.parentNode.insertBefore(wrap,admin);wrap.appendChild(admin);wrap.insertAdjacentHTML('afterbegin','<button id="refreshBtn" class="iconBtn" title="Refrescar" aria-label="Refrescar pantalla">↻</button>')}
+  }
+  if(!$('#editModal'))document.body.insertAdjacentHTML('beforeend',`<div id="editModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="editTitle"><div class="modalCard"><div class="row"><h2 id="editTitle">Editar bultos</h2><button id="cancelEdit" class="iconBtn" aria-label="Cerrar">×</button></div><label>Nombre del código<input id="editCode" autocomplete="off" autocapitalize="characters"></label><label>Cantidad</label><div class="quantityEditor"><button id="minusQty" type="button">−</button><input id="editQty" type="number" min="0" max="9999" inputmode="numeric"><button id="plusQty" type="button">＋</button></div><p class="muted">La cantidad 0 elimina este código de la tarima.</p><button id="saveEdit" class="primary big">Guardar cambios</button><button id="deleteCode" class="danger">Eliminar todos estos bultos</button></div></div>`);
+  if(!document.querySelector('link[href*="editor.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='editor.css?v=7';document.head.appendChild(link)}
+}
+ensureEditorUI();
 async function api(action,data={},silent=false){if(!cfg.API_URL||cfg.API_URL.includes('PEGAR_AQUI'))throw new Error('Configura API_URL en config.js.');if(!silent)loading(true);try{const r=await fetch(cfg.API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({...data,action,apiKey:cfg.API_KEY||''}),redirect:'follow'}),j=await r.json();if(!j.ok)throw new Error(j.error||'Error del servidor');return j.data}finally{if(!silent)loading(false)}}
 function view(id){$$('.view').forEach(x=>x.classList.toggle('active',x.id===id));if(id!=='scan')stopCamera();scrollTo(0,0)}
 function loading(on){$('#loading').classList.toggle('hidden',!on)}
