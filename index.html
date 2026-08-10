@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#173f35"><title>Tandera · Revalidación</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=6"><link rel="stylesheet" href="editor.css?v=6">
 </head>
 <body>
   <header>
     <div class="headerIdentity"><div class="brandLogo"><span>i</span>Full</div><div><small>TANDERA</small><h1>Revalidación</h1></div></div>
-    <button id="adminBtn" class="ghost">Tarimas</button>
+    <div class="headerActions"><button id="refreshBtn" class="iconBtn" title="Refrescar" aria-label="Refrescar pantalla">↻</button><button id="adminBtn" class="ghost">Tarimas</button></div>
   </header>
   <main>
     <section id="home" class="view active">
@@ -44,6 +44,17 @@
 
     <section id="detail" class="view"><button class="back" data-back="admin">← Tarimas</button><div id="detailBody"></div></section>
   </main>
+  <div id="editModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="editTitle">
+    <div class="modalCard">
+      <div class="row"><h2 id="editTitle">Editar bultos</h2><button id="cancelEdit" class="iconBtn" aria-label="Cerrar">×</button></div>
+      <label>Nombre del código<input id="editCode" autocomplete="off" autocapitalize="characters"></label>
+      <label>Cantidad</label>
+      <div class="quantityEditor"><button id="minusQty" type="button">−</button><input id="editQty" type="number" min="0" max="9999" inputmode="numeric"><button id="plusQty" type="button">＋</button></div>
+      <p class="muted">La cantidad 0 elimina este código de la tarima.</p>
+      <button id="saveEdit" class="primary big">Guardar cambios</button>
+      <button id="deleteCode" class="danger">Eliminar todos estos bultos</button>
+    </div>
+  </div>
   <div id="toast" role="status"></div><div id="loading" class="loading hidden">Procesando…</div>
-  <script src="config.js?v=5"></script><script src="app.js?v=5"></script>
+  <script src="config.js?v=6"></script><script src="app.js?v=6"></script>
 </body></html>
