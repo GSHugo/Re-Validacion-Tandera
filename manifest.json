@@ -1,0 +1,10 @@
+{
+  "name":"Tandera Revalidación",
+  "short_name":"Tandera",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#0d0f14",
+  "theme_color":"#171b22",
+  "lang":"es-MX",
+  "description":"Revalidación de mercancía con operación sin conexión"
+}
