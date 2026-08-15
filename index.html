@@ -2,13 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#173f35"><title>Tandera · Revalidación</title>
+  <meta name="theme-color" content="#171b22"><title>Tandera · Revalidación</title><link rel="manifest" href="manifest.json?v=10">
   <link rel="stylesheet" href="styles.css?v=6"><link rel="stylesheet" href="editor.css?v=6">
 </head>
 <body>
   <header>
     <div class="headerIdentity"><div class="brandLogo"><span>i</span>Full</div><div><small>TANDERA</small><h1>Revalidación</h1></div></div>
-    <div class="headerActions"><button id="refreshBtn" class="iconBtn" title="Refrescar" aria-label="Refrescar pantalla">↻</button><button id="adminBtn" class="ghost">Tarimas</button></div>
+    <div class="headerActions"><span id="syncStatus" class="syncStatus">Comprobando…</span><button id="refreshBtn" class="iconBtn" title="Refrescar" aria-label="Refrescar pantalla">↻</button><button id="adminBtn" class="ghost">Tarimas</button></div>
   </header>
   <main>
     <section id="home" class="view active">
@@ -38,7 +38,7 @@
     </section>
 
     <section id="admin" class="view">
-      <button class="back" data-back="home">← Inicio</button><div class="row"><h2>Tarimas registradas</h2><button id="exportBtn" class="ghost">Exportar Odoo</button></div>
+      <button class="back" data-back="home">← Inicio</button><div class="row adminTitle"><h2>Tarimas registradas</h2><div class="adminTools"><button id="syncBtn" class="ghost">Sincronizar</button><button id="exportBtn" class="ghost">Exportar Odoo</button></div></div>
       <input id="search" type="search" placeholder="Buscar tarima, ubicación o estado"><div id="palletList" class="list"></div>
     </section>
 
@@ -56,5 +56,5 @@
     </div>
   </div>
   <div id="toast" role="status"></div><div id="loading" class="loading hidden">Procesando…</div>
-  <script src="config.js?v=6"></script><script src="app.js?v=6"></script>
+  <script src="config.js?v=10"></script><script src="offline.js?v=10"></script><script src="app.js?v=10"></script>
 </body></html>
